@@ -7,7 +7,7 @@
         <dependencies>
             <module name="org.jboss.resteasy.resteasy-jackson2-provider" services="import"/>
             <module name="com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider"/>
-            <module name="net.sf.jasperreports.jasperreports"/>
+            <!-- <module name="net.sf.jasperreports.jasperreports"/> -->
         </dependencies>
     </deployment>
 </jboss-deployment-structure>
