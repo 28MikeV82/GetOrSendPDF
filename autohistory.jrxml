@@ -1,0 +1,1178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
+<!-- 2015-12-29T02:21:10 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Leaf_Green" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eebaa4-068b-407f-bf7a-d4c2e72a1292">
+	<property name="net.sf.jasperreports.export.json.schema" value="d:\altarix\GetOrSendPDF\MyReports\MyReports\data.json"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="OwnersDS" uuid="1fc785a8-796e-4016-9201-868d7ae9aa13">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
+		<queryString language="JSON">
+			<![CDATA[car.owners]]>
+		</queryString>
+		<field name="number" class="java.lang.String">
+			<fieldDescription><![CDATA[number]]></fieldDescription>
+		</field>
+		<field name="period" class="java.lang.String">
+			<fieldDescription><![CDATA[period]]></fieldDescription>
+		</field>
+		<field name="type" class="java.lang.String">
+			<fieldDescription><![CDATA[type]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="TechnicalInspectionsDS" uuid="ffa51f09-2b86-4fdf-ac5d-d525aa8891a3">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
+		<queryString language="JSON">
+			<![CDATA[car.technicalinspections]]>
+		</queryString>
+		<field name="result" class="java.lang.String">
+			<fieldDescription><![CDATA[result]]></fieldDescription>
+		</field>
+		<field name="date" class="java.lang.String">
+			<fieldDescription><![CDATA[date]]></fieldDescription>
+		</field>
+		<field name="place" class="java.lang.String">
+			<fieldDescription><![CDATA[place]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="InsuranceCasesDS" uuid="264ca337-c1b4-4d5c-898f-81280ebcd65b">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
+		<queryString language="JSON">
+			<![CDATA[car.insurancecases]]>
+		</queryString>
+		<field name="accident" class="java.lang.String">
+			<fieldDescription><![CDATA[accident]]></fieldDescription>
+		</field>
+		<field name="damage" class="java.lang.String">
+			<fieldDescription><![CDATA[damage]]></fieldDescription>
+		</field>
+		<field name="date" class="java.lang.String">
+			<fieldDescription><![CDATA[date]]></fieldDescription>
+		</field>
+		<field name="type" class="java.lang.String">
+			<fieldDescription><![CDATA[type]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="AccidentsDS" uuid="2004b865-af38-4779-8641-42334e2b9467">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
+		<queryString language="JSON">
+			<![CDATA[car.accidents]]>
+		</queryString>
+		<field name="type" class="java.lang.String">
+			<fieldDescription><![CDATA[type]]></fieldDescription>
+		</field>
+		<field name="date" class="java.lang.String">
+			<fieldDescription><![CDATA[date]]></fieldDescription>
+		</field>
+		<field name="place" class="java.lang.String">
+			<fieldDescription><![CDATA[place]]></fieldDescription>
+		</field>
+		<field name="damage" class="java.lang.String">
+			<fieldDescription><![CDATA[damage]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="CommercialUsesDS" uuid="2da837d6-4be1-4430-8526-86d07a98f62b">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
+		<queryString language="JSON">
+			<![CDATA[car.commercialuses]]>
+		</queryString>
+		<field name="name" class="java.lang.String">
+			<fieldDescription><![CDATA[name]]></fieldDescription>
+		</field>
+		<field name="result" class="java.lang.String">
+			<fieldDescription><![CDATA[result]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="FinesDS" uuid="2b8f9e54-5c2d-43c2-b0f5-213a1ad1eff6">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
+		<queryString language="JSON">
+			<![CDATA[fines]]>
+		</queryString>
+		<field name="payed" class="java.lang.String">
+			<fieldDescription><![CDATA[payed]]></fieldDescription>
+		</field>
+		<field name="amount" class="java.lang.String">
+			<fieldDescription><![CDATA[amount]]></fieldDescription>
+		</field>
+		<field name="date" class="java.lang.String">
+			<fieldDescription><![CDATA[date]]></fieldDescription>
+		</field>
+		<field name="number" class="java.lang.String">
+			<fieldDescription><![CDATA[number]]></fieldDescription>
+		</field>
+		<field name="name" class="java.lang.String">
+			<fieldDescription><![CDATA[name]]></fieldDescription>
+		</field>
+		<field name="offend_name" class="java.lang.String">
+			<fieldDescription><![CDATA[offend_name]]></fieldDescription>
+		</field>
+		<field name="offend_time" class="java.lang.String">
+			<fieldDescription><![CDATA[offend_time]]></fieldDescription>
+		</field>
+		<field name="offend_place" class="java.lang.String">
+			<fieldDescription><![CDATA[offend_place]]></fieldDescription>
+		</field>
+		<field name="reportPlace" class="java.lang.String">
+			<fieldDescription><![CDATA[reportPlace]]></fieldDescription>
+		</field>
+		<field name="authority" class="java.lang.String">
+			<fieldDescription><![CDATA[authority]]></fieldDescription>
+		</field>
+		<field name="offender" class="java.lang.String">
+			<fieldDescription><![CDATA[offender]]></fieldDescription>
+		</field>
+		<field name="TS" class="java.lang.String">
+			<fieldDescription><![CDATA[TS]]></fieldDescription>
+		</field>
+		<field name="images" class="java.lang.String">
+			<fieldDescription><![CDATA[images]]></fieldDescription>
+		</field>
+	</subDataset>
+	<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="net.sf.jasperreports.json.source" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="net.sf.jasperreports.json.sources" class="java.util.List" isForPrompting="false"/>
+	<parameter name="net.sf.jasperreports.json.date.pattern" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="net.sf.jasperreports.json.number.pattern" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="JSON_LOCALE" class="java.util.Locale" isForPrompting="false"/>
+	<parameter name="net.sf.jasperreports.json.locale.code" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="JSON_TIME_ZONE" class="java.util.TimeZone" isForPrompting="false"/>
+	<parameter name="net.sf.jasperreports.json.timezone.id" class="java.lang.String" isForPrompting="false"/>
+	<queryString language="JSON">
+		<![CDATA[common]]>
+	</queryString>
+	<field name="sts" class="java.lang.String">
+		<fieldDescription><![CDATA[sts]]></fieldDescription>
+	</field>
+	<field name="grz" class="java.lang.String">
+		<fieldDescription><![CDATA[grz]]></fieldDescription>
+	</field>
+	<field name="vin" class="java.lang.String">
+		<fieldDescription><![CDATA[vin]]></fieldDescription>
+	</field>
+	<field name="model" class="java.lang.String">
+		<fieldDescription><![CDATA[model]]></fieldDescription>
+	</field>
+	<field name="year" class="java.lang.String">
+		<fieldDescription><![CDATA[year]]></fieldDescription>
+	</field>
+	<field name="back" class="java.lang.String">
+		<fieldDescription><![CDATA[back]]></fieldDescription>
+	</field>
+	<field name="ecologyclass" class="java.lang.String">
+		<fieldDescription><![CDATA[ecologyclass]]></fieldDescription>
+	</field>
+	<field name="motorhourcepower" class="java.lang.String">
+		<fieldDescription><![CDATA[motorhourcepower]]></fieldDescription>
+	</field>
+	<field name="motorpower" class="java.lang.String">
+		<fieldDescription><![CDATA[motorpower]]></fieldDescription>
+	</field>
+	<field name="ownerscount" class="java.lang.String">
+		<fieldDescription><![CDATA[ownerscount]]></fieldDescription>
+	</field>
+	<field name="color" class="java.lang.String">
+		<fieldDescription><![CDATA[color]]></fieldDescription>
+	</field>
+	<field name="customcountry" class="java.lang.String">
+		<fieldDescription><![CDATA[customcountry]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="48" y="5" width="150" height="33" uuid="3eb8e1ab-7e38-4368-89db-62b6501a8c67"/>
+				<textElement verticalAlignment="Middle">
+					<font size="18"/>
+				</textElement>
+				<text><![CDATA[АВТОИСТОРИЯ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="-2" y="0" width="50" height="50" uuid="eb597a30-8e9e-417c-ac19-d49a2570cdb2"/>
+				<imageExpression><![CDATA["report.png"]]></imageExpression>
+			</image>
+			<textField pattern="dd MMMMM yyyy, HH:mm">
+				<reportElement style="Column header" x="280" y="16" width="200" height="20" uuid="52b14279-b5cc-469c-87c5-9c4ae284882b">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="485" y="16" width="68" height="18" forecolor="#666666" uuid="ddff530e-469f-4197-9f06-702e714e9e6d">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[mycarstory.ru]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Opaque" x="0" y="60" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="d4fb10e8-32d4-48b6-af84-5c17e4605c03">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="1.5" lineStyle="Solid" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="111" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="20" width="178" height="45" uuid="aa0cb53b-3698-400a-9db6-a8562714f8c9"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="65" width="130" height="18" forecolor="#666666" uuid="72b49f72-e956-44fa-8e35-28f2273aef75">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[СВИДЕТЕЛЬСТВО ТС:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="83" width="178" height="26" uuid="de8685c6-e49d-48af-a909-87d8bda76d04"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sts}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="300" y="65" width="130" height="18" forecolor="#666666" uuid="db3d4a4f-eae5-4a21-9ef3-a3cd00860ab8">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ГОСНОМЕР:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="300" y="81" width="130" height="30" uuid="f779e206-e7c7-4c47-9b7d-36863ba530c4"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{grz}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="229" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement style="Title" x="0" y="10" width="230" height="26" uuid="678e9661-e149-463e-8032-931faa3c78a6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ОБЩИЕ СВЕДЕНИЯ]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="0" y="41" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="d69c6691-e92e-45c5-bf2d-c1dc15dabb91">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#4ECF8F"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="50" width="280" height="18" forecolor="#666666" uuid="4eeff7d9-4fca-4daa-a943-a9c1bf77fd03">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Количество владельцев:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="50" width="275" height="18" uuid="987bd4a7-327c-4b81-92ad-2d264a3f5a81"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{ownerscount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="68" width="280" height="18" forecolor="#666666" uuid="5e5c05f8-7fd7-48e2-af46-c3ae886cffae">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Марка, модель (модификация):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="68" width="275" height="18" uuid="e30535f6-addb-4094-91a4-04a56e3b5c00"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="86" width="280" height="18" forecolor="#666666" uuid="453506c5-b278-42eb-bc19-88c3f95c94a7">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Год выпуска:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="86" width="275" height="18" uuid="fbb6c7be-5849-4060-865e-2e46b3693587"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="0" y="104" width="280" height="18" forecolor="#666666" uuid="40616775-4352-4298-8e90-4fff91e585c3">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Цвет кузова:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="104" width="275" height="18" uuid="0d5028be-98ce-4a80-ad27-2a786857b266"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{color}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="0" y="122" width="280" height="18" forecolor="#666666" uuid="85ed7f9d-81db-4717-ac35-ea7b2618fb5e">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Тип кузова:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="122" width="275" height="18" uuid="fcf16734-07ab-453d-94ca-b1e1595a9599"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{back}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="0" y="158" width="280" height="18" forecolor="#666666" uuid="01a11a2b-9cde-4e3e-8d95-dfc74724479f">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Мощность двигателя, кВт:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="158" width="275" height="18" uuid="d8714c80-fac8-4dfb-be48-7c7213affd35"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{motorpower}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="0" y="140" width="280" height="18" forecolor="#666666" uuid="b2bc56a7-d6b2-4f8c-a423-9c54e14809d5">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Мощность двигателя, л.с.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="140" width="275" height="18" uuid="c54c9973-7a90-406a-be5d-164946350651"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{motorhourcepower}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="176" width="275" height="18" uuid="944be3b3-81a3-4917-8774-40480d37a69d"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{ecologyclass}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="0" y="176" width="280" height="18" forecolor="#666666" uuid="ecc18629-462d-4190-96a2-4ea1d98d7072">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Экологический класс:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="194" width="275" height="18" uuid="053d2b99-78f8-4675-82ed-e02c6e727581"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$F{customcountry}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="" x="0" y="194" width="280" height="18" forecolor="#666666" uuid="6a50e8fe-4c0f-4530-823c-26aad6f14314">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Bottom" markup="none">
+					<font size="10" isBold="false" isStrikeThrough="false"/>
+					<paragraph spacingAfter="0"/>
+				</textElement>
+				<text><![CDATA[Страна вывоза:]]></text>
+			</staticText>
+		</band>
+		<band height="112">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement style="Title" x="0" y="10" width="280" height="26" uuid="613f5778-87b9-46b7-8dd3-0ed0dc2e67cf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ИСТОРИЯ ВЛАДЕНИЯ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="1" y="50" width="553" height="28" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="3a7d66a0-db59-42a5-9d1e-d043da586909"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="150" y="50" width="170" height="28" uuid="b7dcf8f8-c613-4243-8a21-d90ff10184c9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Период]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="320" y="50" width="233" height="28" uuid="ec51f5a4-2d99-49a2-8264-7527133b7a2a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Тип владельца]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="140" height="28" uuid="ed7135c5-28ed-4634-8bf3-66711af8c7c6"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Владелец]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="1" y="80" width="554" height="18" uuid="032e865d-4593-45df-8083-08fbbb841030"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="OwnersDS" uuid="50edef3e-8c2a-4655-b00f-3bad4cfc6d13">
+						<datasetParameter name="JSON_INPUT_STREAM">
+							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.source">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.source}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.sources">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.sources}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.date.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.date.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.number.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.number.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_LOCALE">
+							<datasetParameterExpression><![CDATA[$P{JSON_LOCALE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.locale.code">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.locale.code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_TIME_ZONE">
+							<datasetParameterExpression><![CDATA[$P{JSON_TIME_ZONE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="554">
+						<textField>
+							<reportElement x="9" y="0" width="141" height="18" uuid="5f528246-da81-460f-975f-62979221d998">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{number}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="150" y="0" width="170" height="18" uuid="e573f113-8164-46f5-839f-a0f91cc54e3c">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{period}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="320" y="0" width="230" height="18" uuid="bff13ac3-9ee0-402a-bf63-8679b6457204">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<line>
+				<reportElement mode="Opaque" x="0" y="41" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="c8ee407e-6a5c-42d5-abef-3a4985c244b7">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#4ECF8F"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="112">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement style="Title" x="0" y="10" width="280" height="26" uuid="92d300e0-0e52-4e7e-871e-7af1dacd7520"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ИНФОРМАЦИЯ О ТО]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="0" y="41" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="3bf43a39-deae-4e8d-bbe0-5870cc0de998">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#4ECF8F"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="1" y="50" width="553" height="28" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="52735201-bfa7-4bb7-ab2f-f0b5d89e0174"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="50" width="71" height="28" uuid="e4f5535b-48a6-40cb-abdc-069961febc07"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Дата]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="50" width="329" height="28" uuid="f74b4c7d-9204-4998-92ae-f0dd86e15f5d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Место проведения]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="50" width="143" height="28" uuid="6e6cac37-f0b8-4d6b-8fae-ccd604ed3148"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Результат]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="1" y="80" width="554" height="18" uuid="f5d6824f-827d-4d2d-8e95-8f0e0578c7be"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="TechnicalInspectionsDS" uuid="41680c6a-92c5-48b3-86c6-002b990789c9">
+						<datasetParameter name="JSON_INPUT_STREAM">
+							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.source">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.source}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.sources">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.sources}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.date.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.date.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.number.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.number.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_LOCALE">
+							<datasetParameterExpression><![CDATA[$P{JSON_LOCALE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.locale.code">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.locale.code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_TIME_ZONE">
+							<datasetParameterExpression><![CDATA[$P{JSON_TIME_ZONE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="554">
+						<textField>
+							<reportElement x="9" y="0" width="71" height="18" uuid="cb880da7-08c7-4e3a-a192-5198611a7b0e">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="80" y="0" width="330" height="18" uuid="6a014177-4fcc-4066-a354-e9527f108fbb">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{place}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="410" y="0" width="140" height="18" uuid="92f8b747-6d57-4045-977b-654e058e57cd">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{result}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+		<band height="112">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement style="Title" x="0" y="10" width="280" height="26" uuid="65a8c296-e83c-4210-855a-951a08fc4dcf"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ИНФОРМАЦИЯ О СТРАХОВЫХ СЛУЧАЯХ]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="0" y="41" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="5a83029d-843b-4a54-92d4-597bfd8c2e2b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#4ECF8F"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="1" y="50" width="553" height="28" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="4fa7de87-7286-497a-a170-4fe78a2c6978"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="50" width="71" height="28" uuid="247d282e-19e7-4a4b-9429-95e178344b76"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Дата]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="50" width="199" height="28" uuid="50b1020a-e38e-40c0-815e-9403ba4d1f91"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Место повреждения]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="50" width="133" height="28" uuid="8256eab4-277f-41f8-b279-e848ba6dc5b5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Возмещение]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="1" y="80" width="554" height="18" uuid="f4c663dd-0fee-4f16-a38e-a3eb0b330c7d"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="InsuranceCasesDS" uuid="d323e051-2df9-45c0-874c-72c3e966ab24">
+						<datasetParameter name="JSON_INPUT_STREAM">
+							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.source">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.source}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.sources">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.sources}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.date.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.date.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.number.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.number.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_LOCALE">
+							<datasetParameterExpression><![CDATA[$P{JSON_LOCALE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.locale.code">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.locale.code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_TIME_ZONE">
+							<datasetParameterExpression><![CDATA[$P{JSON_TIME_ZONE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="554">
+						<textField>
+							<reportElement x="9" y="0" width="71" height="18" uuid="dd577d70-a7ab-493e-922e-afc68b2e2760">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="80" y="0" width="200" height="18" uuid="f446fef9-a9fe-489c-954d-8cee8bca087c">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{damage}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="420" y="0" width="130" height="18" uuid="31c8c993-85db-4eeb-835e-c4f6681b276e">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="280" y="0" width="140" height="18" uuid="788b80b0-2de2-4af7-98cd-cabb06f0b27a">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{accident}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="280" y="50" width="140" height="28" uuid="ab106a2b-9407-48f6-acec-ba1d5ab7857f"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Тип повреждения]]></text>
+			</staticText>
+		</band>
+		<band height="112">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement style="Title" x="0" y="10" width="280" height="26" uuid="63cbf6d3-4c25-44f9-b121-57f7286a253b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[УЧАСТИЕ В ДТП]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="0" y="41" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="fd0c2ddc-dda4-4cdd-9f2d-fa7d37852775">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#4ECF8F"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="1" y="50" width="553" height="28" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="baea04b4-5211-480b-933a-9a599a15e8b3"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="50" width="71" height="28" uuid="f13a58b2-cf0c-4ca3-8c1b-cb46e2715ea9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Дата]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="50" width="179" height="28" uuid="91414282-635e-429b-b7f7-e3d25a5c8f18"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Вид ДТП]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="50" width="133" height="28" uuid="e0052069-a140-46ab-a80e-7ddb9b61aa0e"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Регион]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="1" y="80" width="554" height="18" uuid="e318e194-05db-4cd4-8fe7-f25768ba00da"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="AccidentsDS" uuid="4e0ff2a7-c725-4ea6-800b-25601d1e175f">
+						<datasetParameter name="JSON_INPUT_STREAM">
+							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.source">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.source}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.sources">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.sources}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.date.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.date.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.number.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.number.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_LOCALE">
+							<datasetParameterExpression><![CDATA[$P{JSON_LOCALE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.locale.code">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.locale.code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_TIME_ZONE">
+							<datasetParameterExpression><![CDATA[$P{JSON_TIME_ZONE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="554">
+						<textField>
+							<reportElement x="9" y="0" width="71" height="18" uuid="700191be-2076-4ff1-a837-056d76a2327d">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="80" y="0" width="180" height="18" uuid="88a2e2da-49b9-4505-ac35-541cf6a249c5">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="420" y="0" width="130" height="18" uuid="bf7e2b93-4a67-458d-a4ed-c40ab34c03bb">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{place}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="260" y="0" width="160" height="18" uuid="85791f66-4af9-41fb-b572-50a186127d40">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{damage}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="260" y="50" width="160" height="28" uuid="8058bea9-91e1-46ac-afdc-084cf9629dad"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Повреждения]]></text>
+			</staticText>
+		</band>
+		<band height="112">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement style="Title" x="0" y="10" width="280" height="26" uuid="4e79c817-20dc-4c7c-9775-d66cfb7b92c4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ДЕЙСТВУЮЩИЕ ОГРАНИЧЕНИЯ]]></text>
+			</staticText>
+			<line>
+				<reportElement mode="Opaque" x="0" y="41" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="2ba7d847-d77e-4c07-aa12-0969baf0b900">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#4ECF8F"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="1" y="50" width="553" height="28" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="a547ca74-ed2e-4b65-8a2b-9f52f393abfc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="50" width="400" height="28" uuid="9072d601-fc5c-45b6-b094-043ee094764d"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Вид ограничения]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="50" width="143" height="28" uuid="1e5b65c0-0331-4df8-8dd3-60d156f4b3c1"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Результат проверки]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="1" y="80" width="554" height="18" uuid="3666b9a8-f353-48f1-bcc7-f25702791a4d"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="CommercialUsesDS" uuid="595f4b87-8324-40bc-bc3e-b38493251b23">
+						<datasetParameter name="JSON_INPUT_STREAM">
+							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.source">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.source}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.sources">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.sources}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.date.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.date.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.number.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.number.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_LOCALE">
+							<datasetParameterExpression><![CDATA[$P{JSON_LOCALE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.locale.code">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.locale.code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_TIME_ZONE">
+							<datasetParameterExpression><![CDATA[$P{JSON_TIME_ZONE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="554">
+						<textField>
+							<reportElement x="9" y="0" width="401" height="18" uuid="1fabc4c2-04de-452e-8e50-4e10a596b1f4">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="410" y="0" width="140" height="18" uuid="2bf8fb5e-fdde-4c71-9c77-28dc0718c4c2">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{result}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+		<band height="112">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<line>
+				<reportElement mode="Opaque" x="0" y="41" width="555" height="1" forecolor="#4ECF8F" backcolor="#B4EAD0" uuid="335b7b68-d45b-4e1a-80c3-bdc3c580aff8">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Solid" lineColor="#4ECF8F"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="1" y="50" width="553" height="28" forecolor="#F7F7F7" backcolor="#F7F7F7" uuid="dcd49e6a-9681-4f05-a3dd-a320a80ea330"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="50" width="71" height="28" uuid="13fb8b3b-fb36-4bcd-bdac-1fe5cee0d238"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Дата]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="81" y="50" width="209" height="28" uuid="47c14792-a2b9-4931-9a03-b6c989d24bfe"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Нарушение]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="50" width="103" height="28" uuid="9ad4d03b-bfed-4faa-bcac-acfd99d32fd9"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Штраф]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="1" y="80" width="554" height="18" uuid="aee09530-fdd4-4127-966b-da49ff4a5621"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="FinesDS" uuid="12cf7962-de67-490b-bc8b-77235bcf3444">
+						<datasetParameter name="JSON_INPUT_STREAM">
+							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.source">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.source}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.sources">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.sources}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.date.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.date.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.number.pattern">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.number.pattern}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_LOCALE">
+							<datasetParameterExpression><![CDATA[$P{JSON_LOCALE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.locale.code">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.locale.code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="JSON_TIME_ZONE">
+							<datasetParameterExpression><![CDATA[$P{JSON_TIME_ZONE}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
+							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="18" width="554">
+						<textField>
+							<reportElement x="9" y="0" width="71" height="18" uuid="0728e99a-6453-430d-88e4-0bdb5dff825d">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{date}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="80" y="0" width="210" height="18" uuid="a1a86146-3764-4945-a355-a30d534a1f89">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{offend_name}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="450" y="0" width="100" height="18" uuid="97fb44e9-61d7-4913-b639-e7a104989962">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="290" y="0" width="160" height="18" uuid="f302c75b-7884-42e5-8862-e8ce269bcdc5">
+								<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+							</reportElement>
+							<textElement verticalAlignment="Bottom"/>
+							<textFieldExpression><![CDATA[$F{offender}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement x="290" y="50" width="160" height="28" uuid="fa528589-fa7b-4e33-9b4e-0064ab8b4279"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Нарушитель]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Title" x="0" y="10" width="280" height="26" uuid="85612653-fde8-4b59-a83f-1daf38c5007f"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ШТРАФЫ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="02519f40-8679-4e40-a1f1-699bc025a206"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="0" width="555" height="1" uuid="f367c019-9cb7-431c-8713-5a96f9b889aa"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="1" y="0" width="80" height="20" uuid="6f13e17d-4b46-4ede-ab63-9d2685ec9c16"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="81" y="0" width="40" height="20" uuid="6857db7e-824a-4cda-b8dc-fe5c95aca145"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy, HH:mm">
+				<reportElement style="Column header" x="427" y="1" width="128" height="20" uuid="ef9fc35f-c45f-4ec6-a5cc-ec2020109ea7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="292" y="1" width="130" height="18" forecolor="#666666" uuid="98821e01-807a-4072-ab7a-bc3e7ecfebef">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineColor="#666666"/>
+					<leftPen lineColor="#666666"/>
+					<bottomPen lineColor="#666666"/>
+					<rightPen lineColor="#666666"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Сведения актуальны на]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
