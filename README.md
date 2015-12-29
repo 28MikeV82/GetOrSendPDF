@@ -35,11 +35,11 @@
 
 - **sts**
 
-`^\\d{2}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\\d{6}$|^\\d{10}$`
+`^\d{2}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\d{6}$|^\d{10}$`
 
 - **grz**
 
-`^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{1}\\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\\d{2,3})$|^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\\d{6})$|^(\\d{4}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\\d{2})$|^(\\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXYdD]{2}\\d{3})$|^(\\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXYdD]{1}\\d{5})$|^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{1}\\d{2})$|^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\\d{6})$|^([тТtT]{1}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\\d{5})$|^(\\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{1}\\d{2})$`
+`^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{1}\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\d{2,3})$|^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\d{6})$|^(\d{4}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\d{2})$|^(\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXYdD]{2}\d{3})$|^(\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXYdD]{1}\d{5})$|^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{1}\d{2})$|^([авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\d{6})$|^([тТtT]{1}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{2}\d{5})$|^(\d{3}[авекмнорстхуabekmhopctxyАВЕКМНОРСТХУABEKMHOPCTXY]{1}\d{2})$`
 
 - **vin**
 
