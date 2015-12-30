@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2015-12-29T02:21:10 -->
+<!-- 2015-12-30T20:10:50 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Leaf_Green" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eebaa4-068b-407f-bf7a-d4c2e72a1292">
-	<property name="net.sf.jasperreports.export.json.schema" value="d:\altarix\GetOrSendPDF\MyReports\MyReports\data.json"/>
+	<!-- <property name="com.jaspersoft.studio.data.defaultdataadapter" value="Json Data Adapter "/> -->
+	<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
+	
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -35,7 +37,7 @@
 		</box>
 	</style>
 	<subDataset name="OwnersDS" uuid="1fc785a8-796e-4016-9201-868d7ae9aa13">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<!--<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>-->
 		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
 			<![CDATA[car.owners]]>
@@ -51,7 +53,7 @@
 		</field>
 	</subDataset>
 	<subDataset name="TechnicalInspectionsDS" uuid="ffa51f09-2b86-4fdf-ac5d-d525aa8891a3">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<!--<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>-->
 		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
 			<![CDATA[car.technicalinspections]]>
@@ -67,7 +69,7 @@
 		</field>
 	</subDataset>
 	<subDataset name="InsuranceCasesDS" uuid="264ca337-c1b4-4d5c-898f-81280ebcd65b">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<!--<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>-->
 		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
 			<![CDATA[car.insurancecases]]>
@@ -86,7 +88,7 @@
 		</field>
 	</subDataset>
 	<subDataset name="AccidentsDS" uuid="2004b865-af38-4779-8641-42334e2b9467">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<!--<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>-->
 		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
 			<![CDATA[car.accidents]]>
@@ -105,7 +107,7 @@
 		</field>
 	</subDataset>
 	<subDataset name="CommercialUsesDS" uuid="2da837d6-4be1-4430-8526-86d07a98f62b">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<!--<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>-->
 		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
 			<![CDATA[car.commercialuses]]>
@@ -118,7 +120,7 @@
 		</field>
 	</subDataset>
 	<subDataset name="FinesDS" uuid="2b8f9e54-5c2d-43c2-b0f5-213a1ad1eff6">
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>
+		<!--<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DATAADAPTER.xml"/>-->
 		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
 			<![CDATA[fines]]>
@@ -558,7 +560,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="032e865d-4593-45df-8083-08fbbb841030"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="OwnersDS" uuid="50edef3e-8c2a-4655-b00f-3bad4cfc6d13">
-						<datasetParameter name="JSON_INPUT_STREAM">
+						<!--<datasetParameter name="JSON_INPUT_STREAM">
 							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="net.sf.jasperreports.json.source">
@@ -585,7 +587,7 @@
 						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
 							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
@@ -660,7 +662,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="f5d6824f-827d-4d2d-8e95-8f0e0578c7be"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="TechnicalInspectionsDS" uuid="41680c6a-92c5-48b3-86c6-002b990789c9">
-						<datasetParameter name="JSON_INPUT_STREAM">
+						<!--<datasetParameter name="JSON_INPUT_STREAM">
 							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="net.sf.jasperreports.json.source">
@@ -687,7 +689,7 @@
 						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
 							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
@@ -754,7 +756,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="f4c663dd-0fee-4f16-a38e-a3eb0b330c7d"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="InsuranceCasesDS" uuid="d323e051-2df9-45c0-874c-72c3e966ab24">
-						<datasetParameter name="JSON_INPUT_STREAM">
+						<!--<datasetParameter name="JSON_INPUT_STREAM">
 							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="net.sf.jasperreports.json.source">
@@ -781,7 +783,7 @@
 						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
 							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>-->
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
@@ -860,7 +862,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="e318e194-05db-4cd4-8fe7-f25768ba00da"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="AccidentsDS" uuid="4e0ff2a7-c725-4ea6-800b-25601d1e175f">
-						<datasetParameter name="JSON_INPUT_STREAM">
+						<!-- <datasetParameter name="JSON_INPUT_STREAM">
 							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="net.sf.jasperreports.json.source">
@@ -887,7 +889,7 @@
 						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
 							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression> -->
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
@@ -961,7 +963,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="3666b9a8-f353-48f1-bcc7-f25702791a4d"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="CommercialUsesDS" uuid="595f4b87-8324-40bc-bc3e-b38493251b23">
-						<datasetParameter name="JSON_INPUT_STREAM">
+						<!-- <datasetParameter name="JSON_INPUT_STREAM">
 							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="net.sf.jasperreports.json.source">
@@ -988,7 +990,7 @@
 						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
 							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression> -->
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
@@ -1041,7 +1043,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="aee09530-fdd4-4127-966b-da49ff4a5621"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="FinesDS" uuid="12cf7962-de67-490b-bc8b-77235bcf3444">
-						<datasetParameter name="JSON_INPUT_STREAM">
+						<!-- <datasetParameter name="JSON_INPUT_STREAM">
 							<datasetParameterExpression><![CDATA[$P{JSON_INPUT_STREAM}]]></datasetParameterExpression>
 						</datasetParameter>
 						<datasetParameter name="net.sf.jasperreports.json.source">
@@ -1068,7 +1070,7 @@
 						<datasetParameter name="net.sf.jasperreports.json.timezone.id">
 							<datasetParameterExpression><![CDATA[$P{net.sf.jasperreports.json.timezone.id}]]></datasetParameterExpression>
 						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression> -->
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
