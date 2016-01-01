@@ -14,10 +14,9 @@ import javax.ws.rs.core.Response;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Path("/vinwin")
 public class Service {
@@ -64,19 +63,21 @@ public class Service {
     }
 
     @GET
-    @Path("/test/{token}/{sts}/{vin}/{grz}/")
+    @Path("/test/{token}/{sts}/{vin}/{grz}/{debug}")
     @Consumes(MEDIA_TYPE_JSON_UTF8)
     @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
     public Response test(@PathParam("token")String token,
                          @PathParam("sts")String sts,
                          @PathParam("vin")String vin,
-                         @PathParam("grz")String grz) {
+                         @PathParam("grz")String grz,
+                         @PathParam("debug")String debug) {
         try {
             HashMap<String, String> params = new HashMap<>();
             params.put("token", token);
             params.put("sts", sts);
             params.put("vin", vin);
             params.put("grz", grz);
+            params.put("debug", debug);
 
             /*
             InputStream is = getJsonReportData(params);
@@ -89,7 +90,7 @@ public class Service {
             */
 
             File report = getReport(params);
-            return Response.status(200).entity("ok").build();
+            return Response.status(200).entity(report.getAbsolutePath()).build();
         } catch (Exception e) {
             e.printStackTrace();
             return Response.status(500).entity(e.getMessage()).build();
@@ -181,14 +182,43 @@ public class Service {
         return generateReport(reportName, params);
     }
 
+    /**
+     * The method generates report name using a mask which is specified by 'report.mask' property
+     *   from config.properties. Mask contain few macros with syntax like %param1|param2|'default'%
+     *   and each param is resolved by name within passed <b>params</b>.
+     *   For example "%grz|vin|'unknown'%.pdf" mask is resolved to "grz-value.pdf" if grz is
+     *   specified in passed <b>params</b> or "vin-value.pdf" if grz is not specified but
+     *   vin is specified or "unknown.pdf" if grz and vin are not specified.
+     * @param params
+     * @return report name with resolved macros
+     */
     private String buildReportName(Map<String, String> params) {
-        //TODO
-        return "test.pdf";
+        String mask = config.getProperty("report.mask");
+        String name = mask;
+        Matcher matcher = Pattern.compile("(%.+?%)").matcher(mask);
+        while (matcher.find()) {
+            String macro = matcher.group();
+            String trimmedMacro = macro.substring(1, macro.length() - 1);
+            String replacement = "";
+            for (String param: trimmedMacro.split("\\|")) {
+                if (paramExists(params, param)) {
+                    replacement = params.get(param);
+                    break;
+                }
+                if (param.startsWith("'")) {
+                    replacement = param.substring(1, param.length() - 1);
+                    break;
+                }
+            }
+            name = name.replace(macro, replacement);
+        }
+        return name;
     }
 
     private File findReportInCache(String reportName) {
-        //TODO
-        return null;
+        if ("true".equalsIgnoreCase(config.getProperty("cache.disabled"))) return null;
+        File report = new File(cachePathReports, reportName);
+        return report.isFile() ? report : null;
     }
 
     private File generateReport(String reportName, Map<String, String> params) throws Exception {
@@ -203,14 +233,14 @@ public class Service {
                 jasperReport, jrParams);
 
         java.nio.file.Path reportPath = Paths.get(cachePathReports, reportName);
-        JasperExportManager.exportReportToPdfFile(jasperPrint, reportPath.toString());
+        JasperExportManager.getInstance(jrContext).exportReportToPdfFile(
+                jasperPrint, reportPath.toString());
         return reportPath.toFile();
     }
 
     private LocalJasperReportsContext getJasperReportsContext() {
         LocalJasperReportsContext jrContext = new LocalJasperReportsContext(
                 DefaultJasperReportsContext.getInstance());
-
         jrContext.setClassLoader(getClass().getClassLoader());
         jrContext.setFileResolver(new FileResolver() {
             @Override
@@ -234,6 +264,7 @@ public class Service {
     }
 
     private InputStream getJsonReportData(Map<String, String> params) throws Exception {
+        //TODO
         String jsonStr =
                 "{\n" +
                 "        \"common\":\n" +
