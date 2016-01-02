@@ -1,0 +1,18 @@
+{
+    "dataSet": "avtokod-history",
+    "token" : "adbf781378af11e5b89a000c293f7799",
+    "terms": [
+        {
+            "name": "sts",
+            "value": "7717206429"
+        },
+        {
+            "name": "vin",
+            "value": "XWEHN512BD0001573"
+        },
+        {
+            "name": "grz",
+            "value": "В203РХ177"
+        }
+    ]
+}
