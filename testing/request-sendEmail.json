@@ -1,0 +1,14 @@
+{
+    "token": "adbf781378af11e5b89a000c293f7799",
+    "to_email": "michael-velmiskin@yandex.ru",
+    "subject": "Test subject",
+    "body": "Test body.<br>Best regards.",
+    "attachments" : [
+        {
+            "content_encoded": "base_64", 
+            "content_type": "text/plain;charset=utf-8",
+            "filename": "attachment.txt",
+            "content": "PD94bWwgdmVyc2lvbj1cIjEuMFwiPz48YT7QoNC+0LHQuNC9INCT0YPQtDwvYT4="
+        }
+    ]
+}

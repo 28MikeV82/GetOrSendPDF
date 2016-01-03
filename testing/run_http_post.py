@@ -46,7 +46,7 @@ if r.status_code == requests.codes.ok:
         response = unicode(json.dumps(r.json(), sort_keys=True,
                                       indent=4, ensure_ascii=False))
     except JSONDecodeError:
-        response = r.text
+        response = unicode(r.text)
 
     if out_file is None:
         print 'Ok, response:'
