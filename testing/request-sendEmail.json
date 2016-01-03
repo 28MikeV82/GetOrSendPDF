@@ -1,8 +1,8 @@
 {
     "token": "adbf781378af11e5b89a000c293f7799",
     "to_email": "michael-velmiskin@yandex.ru",
-    "subject": "Test subject",
-    "body": "Test body.<br>Best regards.",
+    "subject": "Hello world!",
+    "body": "Well done, commander!",
     "attachments" : [
         {
             "content_encoded": "base_64", 

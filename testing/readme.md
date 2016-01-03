@@ -1,5 +1,7 @@
 - testing of getPDF:
 `./run_http_post.py http://localhost:8080/tl-vinwin-backend/vinwin/getPDF -j request-getPDF.json`
+- testing of sendPDF:
+`./run_http_post.py http://localhost:8080/tl-vinwin-backend/vinwin/sendPDF -j request-sendPDF.json`
 - testing of getData (avtokod-history):
 `./run_http_post.py http://hub.msp-tl.ru/msp-sgw-ws/service/api/storage/getData -j request-getData-history.json -o history.json`
 - testing of getData (offence-avtokod-sts):

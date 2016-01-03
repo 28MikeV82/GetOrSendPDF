@@ -3,12 +3,15 @@ package ru.rest;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.query.JsonQueryExecuterFactory;
 import net.sf.jasperreports.engine.util.FileResolver;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.util.LocalJasperReportsContext;
 import ru.rest.utils.CodeMsgException;
+import ru.rest.utils.MacroResolver;
 import ru.rest.utils.ParamsMap;
 
 import javax.ws.rs.*;
@@ -20,8 +23,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Properties;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Path("/vinwin")
 public class Service {
@@ -122,12 +123,27 @@ public class Service {
     @Produces(MEDIA_TYPE_JSON_UTF8)
     public Response sendPDF(String request) {
         try {
-            //TODO need to be implemented
-            return Response.status(200).entity("{\"result\": \"not implemented yet\"").build();
+            ParamsMap params = parseParams(request);
+            validateParameters(params, false);
+            File report = getReport(params);
+            Client client = new Client(config);
+            Boolean result = client.sendEmail(params, report);
+            return Response.status(200).entity(buildResponse(0, "", result)).build();
+        } catch (CodeMsgException e) {
+            return Response.status(200).entity(
+                    buildResponse(e.getErrorCode(), e.getMessage(), false)).build();
         } catch (Exception e) {
             e.printStackTrace();
             return Response.status(500).build();
         }
+    }
+
+    private ObjectNode buildResponse(int errorCode, String errorMessage, Object result) {
+        ObjectNode response = JsonNodeFactory.instance.objectNode();
+        response.put("errorCode", errorCode);
+        response.put("errorMessage", errorMessage);
+        response.put("result", result.toString());
+        return response;
     }
 
     private ParamsMap parseParams(String request) throws IOException {
@@ -183,37 +199,8 @@ public class Service {
         return generateReport(reportName, params);
     }
 
-    /**
-     * The method generates report name using a mask which is specified by 'report.mask' property
-     *   from config.properties. Mask contain few macros with syntax like %param1|param2|'default'%
-     *   and each param is resolved by name within passed <b>params</b>.
-     *   For example "%grz|vin|'unknown'%.pdf" mask is resolved to "grz-value.pdf" if 'grz' is
-     *   specified or "vin-value.pdf" if 'grz' is not specified but 'vin' is specified or
-     *   "unknown.pdf" if 'grz' and 'vin' are not specified.
-     * @param params
-     * @return report name with resolved macros
-     */
     private String buildReportName(ParamsMap params) {
-        String mask = config.getProperty("report.mask");
-        String name = mask;
-        Matcher matcher = Pattern.compile("(%.+?%)").matcher(mask);
-        while (matcher.find()) {
-            String macro = matcher.group();
-            String trimmedMacro = macro.substring(1, macro.length() - 1);
-            String replacement = "";
-            for (String param: trimmedMacro.split("\\|")) {
-                if (paramExists(params, param)) {
-                    replacement = params.get(param);
-                    break;
-                }
-                if (param.startsWith("'")) {
-                    replacement = param.substring(1, param.length() - 1);
-                    break;
-                }
-            }
-            name = name.replace(macro, replacement);
-        }
-        return name;
+        return MacroResolver.resolve(config.getProperty("report.mask"), params);
     }
 
     private File findReportInCache(String reportName) {
@@ -278,9 +265,9 @@ public class Service {
     }
 
     private JsonNode getJsonReportData(ParamsMap params) throws Exception {
-        Client client = new Client();
-        JsonNode history = client.getAvtokodHistory(params, config);
-        JsonNode offence = client.getAvtokodOffence(params, config);
+        Client client = new Client(config);
+        JsonNode history = client.getAvtokodHistory(params);
+        JsonNode offence = client.getAvtokodOffence(params);
         client.mergeAvtokodData(history, offence);
         return history;
     }
