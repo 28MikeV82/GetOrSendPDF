@@ -17,7 +17,9 @@ import ru.rest.utils.ParamsMap;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.StreamingOutput;
 import java.io.*;
+import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -58,29 +60,22 @@ public class Service {
     @GET
     @Path("/test")
     @Consumes(MEDIA_TYPE_JSON_UTF8)
-    @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response test(@QueryParam("debug")String debug,
                          @QueryParam("token")String token,
                          @QueryParam("sts")String sts,
                          @QueryParam("vin")String vin,
                          @QueryParam("grz")String grz) {
         try {
-            if (1 == 1) {
-                String templateName = config.getProperty("email.body.template.name");
-                InputStream is = getClass().getResourceAsStream(templateName);
-                InputStreamReader isr = new InputStreamReader(is, "UTF-8");
-                StringBuilder sb = new StringBuilder(1024);
-                char[] buffer = new char[1024];
-                for (int n; (n = isr.read(buffer)) != -1; sb.append(buffer, 0, n));
-                return Response.status(200).entity(sb.toString()).build();
-            }
-
             ParamsMap params = new ParamsMap();
             params.put("token", token);
             params.put("sts", sts);
             params.put("vin", vin);
             params.put("grz", grz);
             params.put("debug", debug);
+
+            if (1 == 1) {
+            }
 
             //JsonNode reportData = getJsonReportData(params);
             /*
@@ -110,14 +105,24 @@ public class Service {
     @POST
     @Path("/getPDF")
     @Consumes(MEDIA_TYPE_JSON_UTF8)
-    @Produces(MediaType.TEXT_PLAIN) // MediaType.APPLICATION_OCTET_STREAM_TYPE?
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response getPDF(String jsonRequest) {
         try {
             ParamsMap params = parseParams(jsonRequest);
             validateParameters(params, true);
-            File report = getReport(params);
-            //TODO
-            return Response.status(200).entity(report.getAbsolutePath()).build();
+            final File report = getReport(params);
+            return Response
+                    .ok()
+                    .header("content-disposition", "attachment;" +
+                            "filename=\"" + URLEncoder.encode(report.getName(), "utf-8") + "\"")
+                    .entity(new StreamingOutput() {
+                        @Override
+                        public void write(OutputStream outputStream)
+                                throws IOException, WebApplicationException {
+                            Files.copy(report.toPath(), outputStream);
+                        }
+                    })
+                    .build();
         } catch(CodeMsgException e) {
             e.printStackTrace();
             return Response.status(e.getErrorCode()).entity(e.getMessage()).build();
