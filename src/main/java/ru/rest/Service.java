@@ -50,7 +50,7 @@ public class Service {
             e.printStackTrace();
         }
 
-        String dataPath = System.getProperty(config.getProperty("property.data.path"));
+        String dataPath = System.getProperty(config.getProperty("jboss.prop.data.path"));
         cachePathReports = Paths.get(dataPath, config.getProperty("cache.path.reports")).toString();
         cachePathTemplates = Paths.get(cachePathReports, config.getProperty("cache.path.templates")).toString();
     }
@@ -65,6 +65,16 @@ public class Service {
                          @QueryParam("vin")String vin,
                          @QueryParam("grz")String grz) {
         try {
+            if (1 == 1) {
+                String templateName = config.getProperty("email.body.template.name");
+                InputStream is = getClass().getResourceAsStream(templateName);
+                InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+                StringBuilder sb = new StringBuilder(1024);
+                char[] buffer = new char[1024];
+                for (int n; (n = isr.read(buffer)) != -1; sb.append(buffer, 0, n));
+                return Response.status(200).entity(sb.toString()).build();
+            }
+
             ParamsMap params = new ParamsMap();
             params.put("token", token);
             params.put("sts", sts);

@@ -15,6 +15,8 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -92,8 +94,12 @@ public class Client {
     private String getEmailBodyTemplate(){
         try {
             String templateName = config.getProperty("email.body.template.name");
-            Path templatePath = Paths. get(getClass().getResource(templateName).toURI());
-            return new String(Files.readAllBytes(templatePath));
+            InputStream is = getClass().getResourceAsStream(templateName);
+            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
+            StringBuilder sb = new StringBuilder(1024);
+            char[] buffer = new char[1024];
+            for (int n; (n = isr.read(buffer)) != -1; sb.append(buffer, 0, n));
+            return sb.toString();
         } catch (Exception e) {
             e.printStackTrace();
             return "[empty]";
