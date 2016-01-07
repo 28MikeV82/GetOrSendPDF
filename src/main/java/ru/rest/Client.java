@@ -93,7 +93,7 @@ public class Client {
 
     private String getEmailBodyTemplate(){
         try {
-            String templateName = config.getProperty("email.body.template.name");
+            String templateName = config.getProperty("email.body.template_name");
             InputStream is = getClass().getResourceAsStream(templateName);
             InputStreamReader isr = new InputStreamReader(is, "UTF-8");
             StringBuilder sb = new StringBuilder(1024);

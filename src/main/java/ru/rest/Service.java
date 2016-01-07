@@ -9,6 +9,7 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.query.JsonQueryExecuterFactory;
 import net.sf.jasperreports.engine.util.FileResolver;
 import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.engine.util.JRSaver;
 import net.sf.jasperreports.engine.util.LocalJasperReportsContext;
 import ru.rest.utils.CodeMsgException;
 import ru.rest.utils.MacroResolver;
@@ -60,7 +61,7 @@ public class Service {
     @GET
     @Path("/test")
     @Consumes(MEDIA_TYPE_JSON_UTF8)
-    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
     public Response test(@QueryParam("debug")String debug,
                          @QueryParam("token")String token,
                          @QueryParam("sts")String sts,
@@ -73,26 +74,6 @@ public class Service {
             params.put("vin", vin);
             params.put("grz", grz);
             params.put("debug", debug);
-
-            if (1 == 1) {
-            }
-
-            //JsonNode reportData = getJsonReportData(params);
-            /*
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(outputStream, reportData);
-            ByteArrayInputStream is = new ByteArrayInputStream(outputStream.toByteArray());
-
-            ByteArrayOutputStream baos = new ByteArrayOutputStream(8192);
-            byte[] buffer = new byte[8192];
-            int n;
-            while ((n = is.read(buffer)) != -1)
-                baos.write(buffer, 0, n);
-            is.close();
-            String outString = new String(baos.toByteArray(), "UTF-8");
-            */
-            //ObjectMapper mapper = new ObjectMapper();
 
             File report = getReport(params);
             return Response.status(200).entity(report.getAbsolutePath()).build();
@@ -273,10 +254,19 @@ public class Service {
         if (!Files.exists(compiledTemplatePath)) {
             String templateName = config.getProperty("report.template.jrxml");
             java.nio.file.Path templatePath = Paths.get(cachePathTemplates, templateName);
-            JasperCompileManager.compileReportToFile(
-                    templatePath.toString(), compiledTemplatePath.toString());
+            JasperReport report = JasperCompileManager.compileReport(templatePath.toString());
+            updateStylesWithPdfFont(report);
+            JRSaver.saveObject(report, compiledTemplatePath.toString());
+            return report;
         }
         return (JasperReport)JRLoader.loadObject(compiledTemplatePath.toFile());
+    }
+
+    private void updateStylesWithPdfFont(JasperReport report) {
+        String pdfFontFile = config.getProperty("report.template.pdf_font");
+        String pdfFontPath = new File(cachePathTemplates, pdfFontFile).getAbsolutePath();
+        for(JRStyle style: report.getStyles())
+            style.setPdfFontName(pdfFontPath);
     }
 
     private JsonNode getJsonReportData(ParamsMap params) throws Exception {
