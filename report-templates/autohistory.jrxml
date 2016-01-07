@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2015-12-31T15:11:39 -->
+<!-- 2016-01-03T21:03:13 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Leaf_Green" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eebaa4-068b-407f-bf7a-d4c2e72a1292">
 	<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
-	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Cp1251"/>
-	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18" pdfFontName="tahoma.ttf" pdfEncoding="Cp1251"/>
-	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true" pdfFontName="tahoma.ttf" pdfEncoding="Cp1251"/>
-	<style name="Detail" fontName="Arial" fontSize="12" pdfFontName="tahoma.ttf" pdfEncoding="Cp1251"/>
-	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF" pdfFontName="tahoma.ttf" pdfEncoding="Cp1251">
+	<style name="Title" fontName="Tahoma" fontSize="26" isBold="true" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Tahoma" fontSize="18" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
+	<style name="Column header" forecolor="#666666" fontName="Tahoma" fontSize="12" isBold="true" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
+	<style name="Detail" fontName="Tahoma" fontSize="12" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -16,7 +16,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF" pdfFontName="tahoma.ttf" pdfEncoding="Cp1251">
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -25,7 +25,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF" pdfFontName="tahoma.ttf" pdfEncoding="Cp1251">
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -167,7 +167,7 @@
 	<parameter name="JSON_TIME_ZONE" class="java.util.TimeZone" isForPrompting="false"/>
 	<parameter name="net.sf.jasperreports.json.timezone.id" class="java.lang.String" isForPrompting="false"/>
 	<queryString language="JSON">
-		<![CDATA[common]]>
+		<![CDATA[CommonInfo]]>
 	</queryString>
 	<field name="sts" class="java.lang.String">
 		<fieldDescription><![CDATA[sts]]></fieldDescription>
@@ -179,16 +179,16 @@
 		<fieldDescription><![CDATA[vin]]></fieldDescription>
 	</field>
 	<field name="model" class="java.lang.String">
-		<fieldDescription><![CDATA[model]]></fieldDescription>
+		<fieldDescription><![CDATA[Model]]></fieldDescription>
 	</field>
 	<field name="year" class="java.lang.String">
-		<fieldDescription><![CDATA[year]]></fieldDescription>
+		<fieldDescription><![CDATA[Year]]></fieldDescription>
 	</field>
 	<field name="back" class="java.lang.String">
 		<fieldDescription><![CDATA[back]]></fieldDescription>
 	</field>
-	<field name="ecologyclass" class="java.lang.String">
-		<fieldDescription><![CDATA[ecologyclass]]></fieldDescription>
+	<field name="ecologyClass" class="java.lang.String">
+		<fieldDescription><![CDATA[EcologClass]]></fieldDescription>
 	</field>
 	<field name="motorhourcepower" class="java.lang.String">
 		<fieldDescription><![CDATA[motorhourcepower]]></fieldDescription>
@@ -200,7 +200,7 @@
 		<fieldDescription><![CDATA[ownerscount]]></fieldDescription>
 	</field>
 	<field name="color" class="java.lang.String">
-		<fieldDescription><![CDATA[color]]></fieldDescription>
+		<fieldDescription><![CDATA[Color]]></fieldDescription>
 	</field>
 	<field name="customcountry" class="java.lang.String">
 		<fieldDescription><![CDATA[customcountry]]></fieldDescription>
@@ -332,7 +332,7 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement key="" style="Detail" x="0" y="50" width="280" height="18" forecolor="#666666" uuid="4eeff7d9-4fca-4daa-a943-a9c1bf77fd03">
+				<reportElement x="0" y="50" width="280" height="18" forecolor="#666666" uuid="4eeff7d9-4fca-4daa-a943-a9c1bf77fd03">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -348,12 +348,12 @@
 				<text><![CDATA[Количество владельцев:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="50" width="275" height="18" uuid="987bd4a7-327c-4b81-92ad-2d264a3f5a81"/>
+				<reportElement x="280" y="50" width="275" height="18" uuid="987bd4a7-327c-4b81-92ad-2d264a3f5a81"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{ownerscount}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Detail" x="0" y="68" width="280" height="18" forecolor="#666666" uuid="5e5c05f8-7fd7-48e2-af46-c3ae886cffae">
+				<reportElement x="0" y="68" width="280" height="18" forecolor="#666666" uuid="5e5c05f8-7fd7-48e2-af46-c3ae886cffae">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -369,12 +369,12 @@
 				<text><![CDATA[Марка, модель (модификация):]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="68" width="275" height="18" uuid="e30535f6-addb-4094-91a4-04a56e3b5c00"/>
+				<reportElement x="280" y="68" width="275" height="18" uuid="e30535f6-addb-4094-91a4-04a56e3b5c00"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{model}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Detail" x="0" y="86" width="280" height="18" forecolor="#666666" uuid="453506c5-b278-42eb-bc19-88c3f95c94a7">
+				<reportElement x="0" y="86" width="280" height="18" forecolor="#666666" uuid="453506c5-b278-42eb-bc19-88c3f95c94a7">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -390,12 +390,12 @@
 				<text><![CDATA[Год выпуска:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="86" width="275" height="18" uuid="fbb6c7be-5849-4060-865e-2e46b3693587"/>
+				<reportElement x="280" y="86" width="275" height="18" uuid="fbb6c7be-5849-4060-865e-2e46b3693587"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" style="Detail" x="0" y="104" width="280" height="18" forecolor="#666666" uuid="40616775-4352-4298-8e90-4fff91e585c3">
+				<reportElement key="" x="0" y="104" width="280" height="18" forecolor="#666666" uuid="40616775-4352-4298-8e90-4fff91e585c3">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -411,12 +411,12 @@
 				<text><![CDATA[Цвет кузова:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="104" width="275" height="18" uuid="0d5028be-98ce-4a80-ad27-2a786857b266"/>
+				<reportElement x="280" y="104" width="275" height="18" uuid="0d5028be-98ce-4a80-ad27-2a786857b266"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{color}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" style="Detail" x="0" y="122" width="280" height="18" forecolor="#666666" uuid="85ed7f9d-81db-4717-ac35-ea7b2618fb5e">
+				<reportElement key="" x="0" y="122" width="280" height="18" forecolor="#666666" uuid="85ed7f9d-81db-4717-ac35-ea7b2618fb5e">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -432,12 +432,12 @@
 				<text><![CDATA[Тип кузова:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="122" width="275" height="18" uuid="fcf16734-07ab-453d-94ca-b1e1595a9599"/>
+				<reportElement x="280" y="122" width="275" height="18" uuid="fcf16734-07ab-453d-94ca-b1e1595a9599"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{back}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" style="Detail" x="0" y="158" width="280" height="18" forecolor="#666666" uuid="01a11a2b-9cde-4e3e-8d95-dfc74724479f">
+				<reportElement key="" x="0" y="158" width="280" height="18" forecolor="#666666" uuid="01a11a2b-9cde-4e3e-8d95-dfc74724479f">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -453,12 +453,12 @@
 				<text><![CDATA[Мощность двигателя, кВт:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="158" width="275" height="18" uuid="d8714c80-fac8-4dfb-be48-7c7213affd35"/>
+				<reportElement x="280" y="158" width="275" height="18" uuid="d8714c80-fac8-4dfb-be48-7c7213affd35"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{motorpower}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" style="Detail" x="0" y="140" width="280" height="18" forecolor="#666666" uuid="b2bc56a7-d6b2-4f8c-a423-9c54e14809d5">
+				<reportElement key="" x="0" y="140" width="280" height="18" forecolor="#666666" uuid="b2bc56a7-d6b2-4f8c-a423-9c54e14809d5">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -474,17 +474,17 @@
 				<text><![CDATA[Мощность двигателя, л.с.:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="140" width="275" height="18" uuid="c54c9973-7a90-406a-be5d-164946350651"/>
+				<reportElement x="280" y="140" width="275" height="18" uuid="c54c9973-7a90-406a-be5d-164946350651"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{motorhourcepower}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement style="Detail" x="280" y="176" width="275" height="18" uuid="944be3b3-81a3-4917-8774-40480d37a69d"/>
+				<reportElement x="280" y="176" width="275" height="18" uuid="944be3b3-81a3-4917-8774-40480d37a69d"/>
 				<textElement verticalAlignment="Bottom"/>
-				<textFieldExpression><![CDATA[$F{ecologyclass}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ecologyClass}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" style="Detail" x="0" y="176" width="280" height="18" forecolor="#666666" uuid="ecc18629-462d-4190-96a2-4ea1d98d7072">
+				<reportElement key="" x="0" y="176" width="280" height="18" forecolor="#666666" uuid="ecc18629-462d-4190-96a2-4ea1d98d7072">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
@@ -500,12 +500,12 @@
 				<text><![CDATA[Экологический класс:]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Detail" x="280" y="194" width="275" height="18" uuid="053d2b99-78f8-4675-82ed-e02c6e727581"/>
+				<reportElement x="280" y="194" width="275" height="18" uuid="053d2b99-78f8-4675-82ed-e02c6e727581"/>
 				<textElement verticalAlignment="Bottom"/>
 				<textFieldExpression><![CDATA[$F{customcountry}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement key="" style="Detail" x="0" y="194" width="280" height="18" forecolor="#666666" uuid="6a50e8fe-4c0f-4530-823c-26aad6f14314">
+				<reportElement key="" x="0" y="194" width="280" height="18" forecolor="#666666" uuid="6a50e8fe-4c0f-4530-823c-26aad6f14314">
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
 				</reportElement>
 				<box>
