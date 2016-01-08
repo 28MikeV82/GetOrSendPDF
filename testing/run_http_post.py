@@ -4,6 +4,7 @@ import argparse
 import json
 import requests
 import io
+import urllib
 from simplejson.scanner import JSONDecodeError
 
 
@@ -28,6 +29,15 @@ def write_data(data, out_file):
         f.write(data)
 
 
+def extract_filename(header):
+    pattern = 'filename='
+    n = header.find(pattern)
+    if n != -1:
+        return header[n + len(pattern):]
+    else:
+        return '[no name]'
+
+
 arg_parser = argparse.ArgumentParser(
     description='It performs HTTP POST request with json parameter')
 arg_parser.add_argument(nargs=1, dest='url', help='Requested URL')
@@ -40,19 +50,27 @@ url, payload, out_file = args.url[0], read_json(args.json_file), args.out_file
 print 'Performing HTTP request to %s ...' % url
 headers = {'content-type': 'application/json'}
 r = requests.post(url, json=payload, headers=headers)
-if r.status_code == requests.codes.ok:
-    response = ''
-    try:
-        response = unicode(json.dumps(r.json(), sort_keys=True,
-                                      indent=4, ensure_ascii=False))
-    except JSONDecodeError:
-        response = unicode(r.text)
-
-    if out_file is None:
-        print 'Ok, response:'
-        print response
+if r.ok:
+    if r.headers['content-type'] == 'application/octet-stream':
+        filename = extract_filename(r.headers['content-disposition'])
+        filename = urllib.unquote(filename).decode('utf8').strip('"')
+        with open(filename, 'wb') as f:
+            for chunk in r.iter_content(1024):
+                f.write(chunk)
+        print "Ok, file '%s' was received" % filename
     else:
-        write_data(response, out_file)
-        print 'Ok, response has been saved into %s' % out_file
+        response = ''
+        try:
+            response = unicode(json.dumps(r.json(), sort_keys=True,
+                                          indent=4, ensure_ascii=False))
+        except JSONDecodeError:
+            response = unicode(r.text)
+
+        if out_file is None:
+            print 'Ok, response:'
+            print response
+        else:
+            write_data(response, out_file)
+            print 'Ok, response has been saved into %s' % out_file
 else:
     print 'Error %s: %s' % (r.status_code, r.reason)
