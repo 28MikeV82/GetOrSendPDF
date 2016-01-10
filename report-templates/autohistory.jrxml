@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.2.0.final using JasperReports Library version 6.2.0  -->
-<!-- 2016-01-03T21:03:13 -->
+<!-- 2016-01-10T20:55:48 -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Leaf_Green" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eebaa4-068b-407f-bf7a-d4c2e72a1292">
-	<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
-	<style name="Title" fontName="Tahoma" fontSize="26" isBold="true" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
-	<style name="SubTitle" forecolor="#666666" fontName="Tahoma" fontSize="18" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
-	<style name="Column header" forecolor="#666666" fontName="Tahoma" fontSize="12" isBold="true" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
-	<style name="Detail" fontName="Tahoma" fontSize="12" pdfEncoding="Cp1251" pdfFontName="c:\tahoma.ttf"/>
+	<style name="Default" isDefault="true" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"/>
+	<style name="Title" fontName="Tahoma" fontSize="26" isBold="true" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Tahoma" fontSize="18" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"/>
+	<style name="Column header" forecolor="#666666" fontName="Tahoma" fontSize="12" isBold="true" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"/>
+	<style name="Detail" fontName="Tahoma" fontSize="12" pdfFontName="c:\tahoma.ttf" pdfEncoding="Cp1251"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -35,131 +35,123 @@
 		</box>
 	</style>
 	<subDataset name="OwnersDS" uuid="1fc785a8-796e-4016-9201-868d7ae9aa13">
-		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
-			<![CDATA[car.owners]]>
+			<![CDATA[VladHist.VladHistTable]]>
 		</queryString>
 		<field name="number" class="java.lang.String">
-			<fieldDescription><![CDATA[number]]></fieldDescription>
+			<fieldDescription><![CDATA[VladRowNum]]></fieldDescription>
 		</field>
 		<field name="period" class="java.lang.String">
-			<fieldDescription><![CDATA[period]]></fieldDescription>
+			<fieldDescription><![CDATA[VladPeriod]]></fieldDescription>
 		</field>
 		<field name="type" class="java.lang.String">
-			<fieldDescription><![CDATA[type]]></fieldDescription>
+			<fieldDescription><![CDATA[VladType]]></fieldDescription>
 		</field>
 	</subDataset>
 	<subDataset name="TechnicalInspectionsDS" uuid="ffa51f09-2b86-4fdf-ac5d-d525aa8891a3">
-		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
-			<![CDATA[car.technicalinspections]]>
+			<![CDATA[GTO_Part.GTO]]>
 		</queryString>
 		<field name="result" class="java.lang.String">
-			<fieldDescription><![CDATA[result]]></fieldDescription>
+			<fieldDescription><![CDATA[GTORes]]></fieldDescription>
 		</field>
 		<field name="date" class="java.lang.String">
-			<fieldDescription><![CDATA[date]]></fieldDescription>
+			<fieldDescription><![CDATA[GTODate]]></fieldDescription>
 		</field>
 		<field name="place" class="java.lang.String">
-			<fieldDescription><![CDATA[place]]></fieldDescription>
+			<fieldDescription><![CDATA[GTORegionKod]]></fieldDescription>
 		</field>
 	</subDataset>
 	<subDataset name="InsuranceCasesDS" uuid="264ca337-c1b4-4d5c-898f-81280ebcd65b">
-		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
-			<![CDATA[car.insurancecases]]>
+			<![CDATA[Insurance_Part.Insurance]]>
 		</queryString>
 		<field name="accident" class="java.lang.String">
-			<fieldDescription><![CDATA[accident]]></fieldDescription>
+			<fieldDescription><![CDATA[InsuranceAccident]]></fieldDescription>
 		</field>
 		<field name="damage" class="java.lang.String">
-			<fieldDescription><![CDATA[damage]]></fieldDescription>
+			<fieldDescription><![CDATA[InsuranceDamage]]></fieldDescription>
 		</field>
 		<field name="date" class="java.lang.String">
-			<fieldDescription><![CDATA[date]]></fieldDescription>
+			<fieldDescription><![CDATA[InsuranceDate]]></fieldDescription>
 		</field>
 		<field name="type" class="java.lang.String">
-			<fieldDescription><![CDATA[type]]></fieldDescription>
+			<fieldDescription><![CDATA[InsuranceType]]></fieldDescription>
 		</field>
 	</subDataset>
 	<subDataset name="AccidentsDS" uuid="2004b865-af38-4779-8641-42334e2b9467">
-		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
-			<![CDATA[car.accidents]]>
+			<![CDATA[DTP_Part.DTP]]>
 		</queryString>
 		<field name="type" class="java.lang.String">
-			<fieldDescription><![CDATA[type]]></fieldDescription>
+			<fieldDescription><![CDATA[DTPType]]></fieldDescription>
 		</field>
 		<field name="date" class="java.lang.String">
-			<fieldDescription><![CDATA[date]]></fieldDescription>
+			<fieldDescription><![CDATA[DTPDate]]></fieldDescription>
 		</field>
 		<field name="place" class="java.lang.String">
-			<fieldDescription><![CDATA[place]]></fieldDescription>
+			<fieldDescription><![CDATA[DTPRegionKod]]></fieldDescription>
 		</field>
 		<field name="damage" class="java.lang.String">
-			<fieldDescription><![CDATA[damage]]></fieldDescription>
+			<fieldDescription><![CDATA[DTPDamage]]></fieldDescription>
 		</field>
 	</subDataset>
 	<subDataset name="CommercialUsesDS" uuid="2da837d6-4be1-4430-8526-86d07a98f62b">
-		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
-			<![CDATA[car.commercialuses]]>
+			<![CDATA[Kommercial_Part.Kommercial]]>
 		</queryString>
 		<field name="name" class="java.lang.String">
-			<fieldDescription><![CDATA[name]]></fieldDescription>
+			<fieldDescription><![CDATA[KommercialStartDate]]></fieldDescription>
 		</field>
 		<field name="result" class="java.lang.String">
-			<fieldDescription><![CDATA[result]]></fieldDescription>
+			<fieldDescription><![CDATA[KommercialLicenseStop]]></fieldDescription>
 		</field>
 	</subDataset>
 	<subDataset name="FinesDS" uuid="2b8f9e54-5c2d-43c2-b0f5-213a1ad1eff6">
-		<property name="net.sf.jasperreports.data.adapter" value="DATAADAPTER.xml"/>
 		<queryString language="JSON">
 			<![CDATA[fines]]>
 		</queryString>
 		<field name="payed" class="java.lang.String">
-			<fieldDescription><![CDATA[payed]]></fieldDescription>
+			<fieldDescription><![CDATA[FineState]]></fieldDescription>
 		</field>
 		<field name="amount" class="java.lang.String">
-			<fieldDescription><![CDATA[amount]]></fieldDescription>
+			<fieldDescription><![CDATA[FineSum]]></fieldDescription>
 		</field>
 		<field name="date" class="java.lang.String">
-			<fieldDescription><![CDATA[date]]></fieldDescription>
+			<fieldDescription><![CDATA[DatDAP]]></fieldDescription>
 		</field>
 		<field name="number" class="java.lang.String">
-			<fieldDescription><![CDATA[number]]></fieldDescription>
+			<fieldDescription><![CDATA[DAP]]></fieldDescription>
 		</field>
 		<field name="name" class="java.lang.String">
-			<fieldDescription><![CDATA[name]]></fieldDescription>
+			<fieldDescription><![CDATA[TipDAPName]]></fieldDescription>
 		</field>
 		<field name="offend_name" class="java.lang.String">
-			<fieldDescription><![CDATA[offend_name]]></fieldDescription>
+			<fieldDescription><![CDATA[StDAP]]></fieldDescription>
 		</field>
 		<field name="offend_time" class="java.lang.String">
-			<fieldDescription><![CDATA[offend_time]]></fieldDescription>
+			<fieldDescription><![CDATA[DatNar]]></fieldDescription>
 		</field>
 		<field name="offend_place" class="java.lang.String">
-			<fieldDescription><![CDATA[offend_place]]></fieldDescription>
+			<fieldDescription><![CDATA[MestoDAP]]></fieldDescription>
 		</field>
 		<field name="reportPlace" class="java.lang.String">
-			<fieldDescription><![CDATA[reportPlace]]></fieldDescription>
+			<fieldDescription><![CDATA[MestoNar]]></fieldDescription>
 		</field>
 		<field name="authority" class="java.lang.String">
-			<fieldDescription><![CDATA[authority]]></fieldDescription>
+			<fieldDescription><![CDATA[OdpsName]]></fieldDescription>
 		</field>
 		<field name="offender" class="java.lang.String">
-			<fieldDescription><![CDATA[offender]]></fieldDescription>
+			<fieldDescription><![CDATA[FioNar]]></fieldDescription>
 		</field>
 		<field name="TS" class="java.lang.String">
-			<fieldDescription><![CDATA[TS]]></fieldDescription>
+			<fieldDescription><![CDATA[GRZNar]]></fieldDescription>
 		</field>
 		<field name="images" class="java.lang.String">
-			<fieldDescription><![CDATA[images]]></fieldDescription>
+			<fieldDescription><![CDATA[HasPhoto]]></fieldDescription>
 		</field>
 	</subDataset>
 	<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.source" class="java.lang.String" isForPrompting="false"/>
-	<parameter name="net.sf.jasperreports.json.sources" class="java.util.List" isForPrompting="false"/>
 	<parameter name="net.sf.jasperreports.json.date.pattern" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="net.sf.jasperreports.json.number.pattern" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="JSON_LOCALE" class="java.util.Locale" isForPrompting="false"/>
@@ -185,25 +177,25 @@
 		<fieldDescription><![CDATA[Year]]></fieldDescription>
 	</field>
 	<field name="back" class="java.lang.String">
-		<fieldDescription><![CDATA[back]]></fieldDescription>
+		<fieldDescription><![CDATA[CorpusTip]]></fieldDescription>
 	</field>
 	<field name="ecologyClass" class="java.lang.String">
 		<fieldDescription><![CDATA[EcologClass]]></fieldDescription>
 	</field>
 	<field name="motorhourcepower" class="java.lang.String">
-		<fieldDescription><![CDATA[motorhourcepower]]></fieldDescription>
+		<fieldDescription><![CDATA[LS]]></fieldDescription>
 	</field>
 	<field name="motorpower" class="java.lang.String">
-		<fieldDescription><![CDATA[motorpower]]></fieldDescription>
+		<fieldDescription><![CDATA[KWT]]></fieldDescription>
 	</field>
 	<field name="ownerscount" class="java.lang.String">
-		<fieldDescription><![CDATA[ownerscount]]></fieldDescription>
+		<fieldDescription><![CDATA[KolVl]]></fieldDescription>
 	</field>
 	<field name="color" class="java.lang.String">
 		<fieldDescription><![CDATA[Color]]></fieldDescription>
 	</field>
 	<field name="customcountry" class="java.lang.String">
-		<fieldDescription><![CDATA[customcountry]]></fieldDescription>
+		<fieldDescription><![CDATA[StatevyvozName]]></fieldDescription>
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -551,7 +543,9 @@
 			<componentElement>
 				<reportElement x="1" y="80" width="554" height="18" uuid="032e865d-4593-45df-8083-08fbbb841030"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="OwnersDS" uuid="50edef3e-8c2a-4655-b00f-3bad4cfc6d13"/>
+					<datasetRun subDataset="OwnersDS" uuid="50edef3e-8c2a-4655-b00f-3bad4cfc6d13">
+						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("VladHist.VladHistTable")]]></dataSourceExpression>
+					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
 							<reportElement x="9" y="0" width="141" height="18" uuid="5f528246-da81-460f-975f-62979221d998">
@@ -624,7 +618,9 @@
 			<componentElement>
 				<reportElement x="1" y="80" width="554" height="18" uuid="f5d6824f-827d-4d2d-8e95-8f0e0578c7be"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="TechnicalInspectionsDS" uuid="41680c6a-92c5-48b3-86c6-002b990789c9"/>
+					<datasetRun subDataset="TechnicalInspectionsDS" uuid="41680c6a-92c5-48b3-86c6-002b990789c9">
+						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("GTP_Part.GTO")]]></dataSourceExpression>
+					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
 							<reportElement x="9" y="0" width="71" height="18" uuid="cb880da7-08c7-4e3a-a192-5198611a7b0e">

@@ -1,8 +1,8 @@
 # Реализация
 
 ### Установка
-Сервис компилируется в tl-vinwin-backend.war.
-Шаблон отчета (см. Шаблон отчета) вынесен из tl-vinwin-backend.war, его требуется подложить на сервер в директорию, определенную настройкой `report.template.path` в config.properties (см. ниже).
+Сервис компилируется в **tl-vinwin-backend.war**.
+Шаблон отчета (см. **Шаблон отчета**) вынесен из tl-vinwin-backend.war, его требуется подложить на сервер в директорию, определенную настройкой `report.template.path` в config.properties (см. ниже).
 
 ### Содержимое config.properties
 Файл расположен в /tl-vinwin-backend.war/WEB-INF/classes/.
@@ -13,15 +13,15 @@
 - `report.template.jrxml` = autohistory.jrxml - имя шаблона отчета
 - `report.template.jasper` = autohistory.jasper - имя скомпилированного шаблона отчета
 - `report.template.pdf_font` = tahoma.ttf - название файла шрифта для отчета, файл ищется в `report.template.path`
-- `report.mask` = %grz|vin|'unknown'%.pdf - маска имени отчета, может содержать макросы (см. Раскрытие макросов)
+- `report.mask` = %grz|vin|'unknown'%.pdf - маска имени отчета, может содержать макросы (см. **Раскрытие макросов**)
 - `regexp.check_email` - регулярное выражение для проверки переданного **email**
 - `regexp.check_sts` - регулярное выражение для проверки переданного **sts**
 - `regexp.check_grz` - регулярное выражение для проверки переданного **grz**
 - `regexp.check_vin` - регулярное выражение для проверки переданного **vin**
 - `getData.target` = http://hub.msp-tl.ru/msp-sgw-ws/service/api/storage/getData - url сервиса **getData**
 - `email.target` = http://hub.msp-tl.ru/msp-sgw-ws/service/api/email/send - url сервиса **send**
-- `email.subject` = Полная информация об автомобиле %grz|vin% - тема письма для метода **sendPDF**, может содержать макросы (см. Раскрытие макросов)
-- `email.body.template_name` = /email-template.txt (расположен в /tl-vinwin-backend.war/WEB-INF/classes/) - имя файла с шаблоном тела письма для метода **sendPDF**, может содержать макросы (см. Раскрытие макросов)
+- `email.subject` = Полная информация об автомобиле %grz|vin% - тема письма для метода **sendPDF**, может содержать макросы (см. **Раскрытие макросов**)
+- `email.body.template_name` = /email-template.txt (расположен в /tl-vinwin-backend.war/WEB-INF/classes/) - имя файла с шаблоном тела письма для метода **sendPDF**, может содержать макросы (см. **Раскрытие макросов**)
 
 ### Шаблон отчета
 Состоит из файлов:
