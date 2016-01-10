@@ -52,9 +52,17 @@ public class Client {
         return response.size() > 0 ? response : null;
     }
 
-    public void mergeAvtokodData(JsonNode history, JsonNode offence) {
-        if (offence != null)
-            ((ObjectNode)history).put("fines", offence);
+    public ObjectNode getAvtokodData(ParamsMap params) throws CodeMsgException {
+        ObjectNode history = (ObjectNode)getAvtokodHistory(params);
+        JsonNode offence = getAvtokodOffence(params);
+
+        if (offence != null) history.put("fines", offence);
+
+        ObjectNode commonInfo = history.with("CommonInfo");
+        for (String param: new String[]{"sts", "vin", "grz"})
+            commonInfo.put(param, params.get(param));
+
+        return history;
     }
 
     public boolean sendEmail(ParamsMap params, File report) throws CodeMsgException {
@@ -116,7 +124,7 @@ public class Client {
         }
     }
 
-    private JsonNode performRequest(String target, ObjectNode request) throws CodeMsgException {
+    private ObjectNode performRequest(String target, ObjectNode request) throws CodeMsgException {
         ResteasyClient client = new ResteasyClientBuilder().build();
         Response response = client.target(target)
                 .request("application/json")
@@ -125,8 +133,7 @@ public class Client {
         try {
             if (response.getStatus() != 200)
                 throw new CodeMsgException(response.getStatus(), response.readEntity(String.class));
-            JsonNode result = response.readEntity(JsonNode.class);
-            return result;
+            return response.readEntity(ObjectNode.class);
         }
         finally {
             response.close();

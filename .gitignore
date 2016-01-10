@@ -1,4 +1,5 @@
 *.iml
+*.pdf
 .idea/
 target/
 pom.properties

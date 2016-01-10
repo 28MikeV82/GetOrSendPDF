@@ -55,32 +55,7 @@ public class Service {
 
         String dataPath = System.getProperty(config.getProperty("jboss.prop.data.path"));
         cachePathReports = Paths.get(dataPath, config.getProperty("cache.path.reports")).toString();
-        cachePathTemplates = Paths.get(cachePathReports, config.getProperty("cache.path.templates")).toString();
-    }
-
-    @GET
-    @Path("/test")
-    @Consumes(MEDIA_TYPE_JSON_UTF8)
-    @Produces(MediaType.TEXT_PLAIN + ";charset=utf-8")
-    public Response test(@QueryParam("debug")String debug,
-                         @QueryParam("token")String token,
-                         @QueryParam("sts")String sts,
-                         @QueryParam("vin")String vin,
-                         @QueryParam("grz")String grz) {
-        try {
-            ParamsMap params = new ParamsMap();
-            params.put("token", token);
-            params.put("sts", sts);
-            params.put("vin", vin);
-            params.put("grz", grz);
-            params.put("debug", debug);
-
-            File report = getReport(params);
-            return Response.status(200).entity(report.getAbsolutePath()).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return Response.status(500).entity(e.getMessage()).build();
-        }
+        cachePathTemplates = Paths.get(dataPath, config.getProperty("report.template.path")).toString();
     }
 
     @POST
@@ -204,7 +179,6 @@ public class Service {
         // Probably we need to store files not in a folder using flat list
         //   but in folders' hierarchy because if there are huge number of files
         //   the search will work too long
-        // TODO the reports' cache should be cleaned up periodically
         if ("true".equalsIgnoreCase(config.getProperty("cache.disabled"))) return null;
         File report = new File(cachePathReports, reportName);
         return report.isFile() ? report : null;
@@ -226,9 +200,6 @@ public class Service {
 
         JasperPrint jasperPrint = JasperFillManager.getInstance(jrContext).fill(
                 jasperReport, jrParams);
-
-        //TODO JRDataSource jrDataSource = new JsonDataSource(getJsonReportData(params));
-        //TODO JRDataSource jrDataSource = new JsonDataCollection<JsonDataSource>(???);
         java.nio.file.Path reportPath = Paths.get(cachePathReports, reportName);
         JasperExportManager.getInstance(jrContext).exportReportToPdfFile(
                 jasperPrint, reportPath.toString());
@@ -257,6 +228,7 @@ public class Service {
             JasperReport report = JasperCompileManager.compileReport(templatePath.toString());
             updateStylesWithPdfFont(report);
             JRSaver.saveObject(report, compiledTemplatePath.toString());
+            makeReportsCacheDir();
             return report;
         }
         return (JasperReport)JRLoader.loadObject(compiledTemplatePath.toFile());
@@ -269,11 +241,13 @@ public class Service {
             style.setPdfFontName(pdfFontPath);
     }
 
+    private void makeReportsCacheDir() {
+        File reportCache = new File(cachePathReports);
+        if (!reportCache.exists()) reportCache.mkdirs();
+    }
+
     private JsonNode getJsonReportData(ParamsMap params) throws Exception {
         Client client = new Client(config);
-        JsonNode history = client.getAvtokodHistory(params);
-        JsonNode offence = client.getAvtokodOffence(params);
-        client.mergeAvtokodData(history, offence);
-        return history;
+        return client.getAvtokodData(params);
     }
 }
