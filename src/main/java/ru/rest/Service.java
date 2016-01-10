@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.query.JsonQueryExecuterFactory;
+import net.sf.jasperreports.engine.data.JsonDataSource;
 import net.sf.jasperreports.engine.util.FileResolver;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.engine.util.JRSaver;
@@ -189,14 +189,23 @@ public class Service {
         JasperReport jasperReport = getJasperReport();
 
         JsonNode reportData = getJsonReportData(params);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(outputStream, reportData);
-        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
 
         HashMap<String, Object> jrParams = new HashMap<>();
-        jrParams.put(JsonQueryExecuterFactory.JSON_INPUT_STREAM, inputStream);
         jrParams.put(JRParameter.REPORT_LOCALE, new Locale("ru", "RU"));
+        jrParams.put("JSON_INPUT_STREAM",
+                convertJsonNodeToInputStream(reportData));
+        jrParams.put("SUB_DATA_SOURCE_OWNERS",
+                getJsonSubDataSource(reportData.path("VladHist").path("VladHistTable")));
+        jrParams.put("SUB_DATA_SOURCE_TECH_INSPECTIONS",
+                getJsonSubDataSource(reportData.path("GTO_Part").path("GTO")));
+        jrParams.put("SUB_DATA_SOURCE_INSURANCE_CASES",
+                getJsonSubDataSource(reportData.path("Insurance_Part").path("Insurance")));
+        jrParams.put("SUB_DATA_SOURCE_ACCIDENTS",
+                getJsonSubDataSource(reportData.path("DTP_Part").path("DTP")));
+        jrParams.put("SUB_DATA_SOURCE_COMMERCIAL_USES",
+                getJsonSubDataSource(reportData.path("Kommercial_Part").path("Kommercial")));
+        jrParams.put("SUB_DATA_SOURCE_FINES",
+                getJsonSubDataSource(reportData.path("fines")));
 
         JasperPrint jasperPrint = JasperFillManager.getInstance(jrContext).fill(
                 jasperReport, jrParams);
@@ -249,5 +258,16 @@ public class Service {
     private JsonNode getJsonReportData(ParamsMap params) throws Exception {
         Client client = new Client(config);
         return client.getAvtokodData(params);
+    }
+
+    private JsonDataSource getJsonSubDataSource(JsonNode node) throws Exception {
+        return new JsonDataSource(convertJsonNodeToInputStream(node));
+    }
+
+    private InputStream convertJsonNodeToInputStream(JsonNode node) throws IOException {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(outputStream, node);
+        return new ByteArrayInputStream(outputStream.toByteArray());
     }
 }

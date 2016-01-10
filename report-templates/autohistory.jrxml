@@ -152,6 +152,12 @@
 		</field>
 	</subDataset>
 	<parameter name="JSON_INPUT_STREAM" class="java.io.InputStream" isForPrompting="false"/>
+	<parameter name="SUB_DATA_SOURCE_OWNERS" class="net.sf.jasperreports.engine.data.JsonDataSource" isForPrompting="false"/>
+	<parameter name="SUB_DATA_SOURCE_TECH_INSPECTIONS" class="net.sf.jasperreports.engine.data.JsonDataSource" isForPrompting="false"/>
+	<parameter name="SUB_DATA_SOURCE_INSURANCE_CASES" class="net.sf.jasperreports.engine.data.JsonDataSource" isForPrompting="false"/>
+	<parameter name="SUB_DATA_SOURCE_ACCIDENTS" class="net.sf.jasperreports.engine.data.JsonDataSource" isForPrompting="false"/>
+	<parameter name="SUB_DATA_SOURCE_COMMERCIAL_USES" class="net.sf.jasperreports.engine.data.JsonDataSource" isForPrompting="false"/>
+	<parameter name="SUB_DATA_SOURCE_FINES" class="net.sf.jasperreports.engine.data.JsonDataSource" isForPrompting="false"/>
 	<parameter name="net.sf.jasperreports.json.date.pattern" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="net.sf.jasperreports.json.number.pattern" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="JSON_LOCALE" class="java.util.Locale" isForPrompting="false"/>
@@ -544,7 +550,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="032e865d-4593-45df-8083-08fbbb841030"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="OwnersDS" uuid="50edef3e-8c2a-4655-b00f-3bad4cfc6d13">
-						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("VladHist.VladHistTable")]]></dataSourceExpression>
+						<dataSourceExpression><![CDATA[$P{SUB_DATA_SOURCE_OWNERS}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
@@ -619,7 +625,7 @@
 				<reportElement x="1" y="80" width="554" height="18" uuid="f5d6824f-827d-4d2d-8e95-8f0e0578c7be"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="TechnicalInspectionsDS" uuid="41680c6a-92c5-48b3-86c6-002b990789c9">
-						<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JsonDataSource)$P{REPORT_DATA_SOURCE}).subDataSource("GTP_Part.GTO")]]></dataSourceExpression>
+						<dataSourceExpression><![CDATA[$P{SUB_DATA_SOURCE_TECH_INSPECTIONS}]]></dataSourceExpression>
 					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
@@ -685,7 +691,9 @@
 			<componentElement>
 				<reportElement x="1" y="80" width="554" height="18" uuid="f4c663dd-0fee-4f16-a38e-a3eb0b330c7d"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="InsuranceCasesDS" uuid="d323e051-2df9-45c0-874c-72c3e966ab24"/>
+					<datasetRun subDataset="InsuranceCasesDS" uuid="d323e051-2df9-45c0-874c-72c3e966ab24">
+						<dataSourceExpression><![CDATA[$P{SUB_DATA_SOURCE_INSURANCE_CASES}]]></dataSourceExpression>
+					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
 							<reportElement x="9" y="0" width="71" height="18" uuid="dd577d70-a7ab-493e-922e-afc68b2e2760">
@@ -762,7 +770,9 @@
 			<componentElement>
 				<reportElement x="1" y="80" width="554" height="18" uuid="e318e194-05db-4cd4-8fe7-f25768ba00da"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="AccidentsDS" uuid="4e0ff2a7-c725-4ea6-800b-25601d1e175f"/>
+					<datasetRun subDataset="AccidentsDS" uuid="4e0ff2a7-c725-4ea6-800b-25601d1e175f">
+						<dataSourceExpression><![CDATA[$P{SUB_DATA_SOURCE_ACCIDENTS}]]></dataSourceExpression>
+					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
 							<reportElement x="9" y="0" width="71" height="18" uuid="700191be-2076-4ff1-a837-056d76a2327d">
@@ -834,7 +844,9 @@
 			<componentElement>
 				<reportElement x="1" y="80" width="554" height="18" uuid="3666b9a8-f353-48f1-bcc7-f25702791a4d"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="CommercialUsesDS" uuid="595f4b87-8324-40bc-bc3e-b38493251b23"/>
+					<datasetRun subDataset="CommercialUsesDS" uuid="595f4b87-8324-40bc-bc3e-b38493251b23">
+						<dataSourceExpression><![CDATA[$P{SUB_DATA_SOURCE_COMMERCIAL_USES}]]></dataSourceExpression>
+					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
 							<reportElement x="9" y="0" width="401" height="18" uuid="1fabc4c2-04de-452e-8e50-4e10a596b1f4">
@@ -885,7 +897,9 @@
 			<componentElement>
 				<reportElement x="1" y="80" width="554" height="18" uuid="aee09530-fdd4-4127-966b-da49ff4a5621"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="FinesDS" uuid="12cf7962-de67-490b-bc8b-77235bcf3444"/>
+					<datasetRun subDataset="FinesDS" uuid="12cf7962-de67-490b-bc8b-77235bcf3444">
+						<dataSourceExpression><![CDATA[$P{SUB_DATA_SOURCE_FINES}]]></dataSourceExpression>
+					</datasetRun>
 					<jr:listContents height="18" width="554">
 						<textField>
 							<reportElement x="9" y="0" width="71" height="18" uuid="0728e99a-6453-430d-88e4-0bdb5dff825d">
