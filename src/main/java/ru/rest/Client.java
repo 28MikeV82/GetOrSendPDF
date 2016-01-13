@@ -15,8 +15,6 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -65,8 +63,9 @@ public class Client {
         return history;
     }
 
-    public boolean sendEmail(ParamsMap params, File report) throws CodeMsgException {
-        ObjectNode request = buildSendEmailRequest(params, report);
+    public boolean sendEmail(ParamsMap params, String subject, String body, File report)
+            throws CodeMsgException {
+        ObjectNode request = buildSendEmailRequest(params, subject, body, report);
         JsonNode response = performRequest(config.getProperty("email.target"), request);
         if (response.get("errorCode").asInt() != 0)
             throw new CodeMsgException(response.get("errorCode").asInt(),
@@ -84,34 +83,20 @@ public class Client {
         return request;
     }
 
-    private ObjectNode buildSendEmailRequest(ParamsMap params, File report) {
+    private ObjectNode buildSendEmailRequest(ParamsMap params,
+                                             String subject, String body, File file) {
         ObjectNode request = JsonNodeFactory.instance.objectNode();
         request.put("token", params.get("token"));
         request.put("to_email", params.get("email"));
-        request.put("subject", MacroResolver.resolve(config.getProperty("email.subject"), params));
-        request.put("body", MacroResolver.resolve(getEmailBodyTemplate(), params));
+        request.put("subject", MacroResolver.resolve(subject, params));
+        request.put("body", MacroResolver.resolve(body, params));
         ArrayNode attachments = request.putArray("attachments");
         ObjectNode attachment = attachments.addObject();
         attachment.put("content_encoded", "base_64");
         attachment.put("content_type", "text/plain;charset=utf-8");
-        attachment.put("filename", report.getName());
-        attachment.put("content", encodeFileWithBase64(report));
+        attachment.put("filename", file.getName());
+        attachment.put("content", encodeFileWithBase64(file));
         return request;
-    }
-
-    private String getEmailBodyTemplate(){
-        try {
-            String templateName = config.getProperty("email.body.template_name");
-            InputStream is = getClass().getResourceAsStream(templateName);
-            InputStreamReader isr = new InputStreamReader(is, "UTF-8");
-            StringBuilder sb = new StringBuilder(1024);
-            char[] buffer = new char[1024];
-            for (int n; (n = isr.read(buffer)) != -1; sb.append(buffer, 0, n));
-            return sb.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "[empty]";
-        }
     }
 
     private String encodeFileWithBase64(File file) {

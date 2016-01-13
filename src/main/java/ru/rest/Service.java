@@ -65,7 +65,8 @@ public class Service {
     public Response getPDF(String jsonRequest) {
         try {
             ParamsMap params = parseParams(jsonRequest);
-            validateParameters(params, true);
+            validateToken(params);
+            validateParameters(params);
             final File report = getReport(params);
             return Response
                     .ok()
@@ -95,10 +96,45 @@ public class Service {
     public Response sendPDF(String request) {
         try {
             ParamsMap params = parseParams(request);
-            validateParameters(params, false);
+            validateToken(params);
+            validateEmail(params);
+            validateParameters(params);
+
             File report = getReport(params);
+            String subject = config.getProperty("email.sendPdf.subject");
+            String body = loadFileResourceAsString("email.sendPdf.body.template");
+
             Client client = new Client(config);
-            Boolean result = client.sendEmail(params, report);
+            Boolean result = client.sendEmail(params, subject, body, report);
+
+            return Response.status(200).entity(buildResponse(0, "", result)).build();
+        } catch (CodeMsgException e) {
+            return Response.status(200).entity(
+                    buildResponse(e.getErrorCode(), e.getMessage(), false)).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.status(500).build();
+        }
+    }
+
+    @POST
+    @Path("/exampleSend")
+    @Consumes(MEDIA_TYPE_JSON_UTF8)
+    @Produces(MEDIA_TYPE_JSON_UTF8)
+    public Response exampleSend(String request) {
+        try {
+            ParamsMap params = parseParams(request);
+            validateToken(params);
+            validateEmail(params);
+
+            File report = new File(cachePathTemplates,
+                    config.getProperty("email.exampleSend.report.template"));
+            String subject = config.getProperty("email.exampleSend.subject");
+            String body = loadFileResourceAsString("email.exampleSend.body.template");
+
+            Client client = new Client(config);
+            Boolean result = client.sendEmail(params, subject, body, report);
+
             return Response.status(200).entity(buildResponse(0, "", result)).build();
         } catch (CodeMsgException e) {
             return Response.status(200).entity(
@@ -124,18 +160,19 @@ public class Service {
         return new ParamsMap(map);
     }
 
-    private void validateParameters(ParamsMap params,
-                                    boolean skipEmail) throws CodeMsgException {
+    private void validateToken(ParamsMap params) throws CodeMsgException {
         if (!paramExists(params, "token"))
             throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "Missing token");
+    }
 
-        if (!skipEmail) {
-            if (!paramExists(params, "email"))
-                throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "Missing email");
-            if (!matchStrWithRegExp(this.config, "regexp.check_email", params.get("email")))
-                throw new CodeMsgException(ERROR_CODE_NOT_VALID_FIELD, "Invalid email");
-        }
+    private void validateEmail(ParamsMap params) throws CodeMsgException {
+        if (!paramExists(params, "email"))
+            throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "Missing email");
+        if (!matchStrWithRegExp(this.config, "regexp.check_email", params.get("email")))
+            throw new CodeMsgException(ERROR_CODE_NOT_VALID_FIELD, "Invalid email");
+    }
 
+    private void validateParameters(ParamsMap params) throws CodeMsgException {
         if (!paramExists(params, "sts"))
             throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "Missing sts");
         if (!matchStrWithRegExp(this.config, "regexp.check_sts", params.get("sts")))
@@ -269,5 +306,15 @@ public class Service {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(outputStream, node);
         return new ByteArrayInputStream(outputStream.toByteArray());
+    }
+
+    private String loadFileResourceAsString(String resourceName) throws IOException {
+        String bodyTemplate = config.getProperty(resourceName);
+        InputStream inputStream = getClass().getResourceAsStream(bodyTemplate);
+        InputStreamReader streamReader = new InputStreamReader(inputStream, "UTF-8");
+        StringBuilder sb = new StringBuilder(1024);
+        char[] buffer = new char[1024];
+        for (int n; (n = streamReader.read(buffer)) != -1; sb.append(buffer, 0, n));
+        return sb.toString();
     }
 }

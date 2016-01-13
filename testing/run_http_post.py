@@ -19,7 +19,7 @@ def read_json(json_file):
             j.append(i)
         txt = '\n'.join(j)
     else:
-        with open(args.json_file, 'r') as jf:
+        with open(json_file, 'r') as jf:
             txt = jf.read()
     return json.loads(txt)
 
@@ -43,34 +43,43 @@ arg_parser = argparse.ArgumentParser(
 arg_parser.add_argument(nargs=1, dest='url', help='Requested URL')
 arg_parser.add_argument('-j', dest='json_file', help='File with json')
 arg_parser.add_argument('-o', dest='out_file', help='File to save response')
+arg_parser.add_argument('-e', dest='headers', help='File with request headers')
 
 args = arg_parser.parse_args()
 url, payload, out_file = args.url[0], read_json(args.json_file), args.out_file
 
+headers = {
+    'content-type': 'application/json',
+}
+if args.headers:
+    headers.update(read_json(args.headers))
+
 print 'Performing HTTP request to %s ...' % url
-headers = {'content-type': 'application/json'}
-r = requests.post(url, json=payload, headers=headers)
-if r.ok:
-    if r.headers['content-type'] == 'application/octet-stream':
-        filename = extract_filename(r.headers['content-disposition'])
+response = requests.post(url, json=payload, headers=headers)
+if response.ok:
+    print 'Ok'
+    print 'headers:'
+    print response.headers
+    if response.headers['content-type'] == 'application/octet-stream':
+        filename = extract_filename(response.headers['content-disposition'])
         filename = urllib.unquote(filename).decode('utf8').strip('"')
         with open(filename, 'wb') as f:
-            for chunk in r.iter_content(1024):
+            for chunk in response.iter_content(1024):
                 f.write(chunk)
-        print "Ok, file '%s' was received" % filename
+        print "file '%s' was received" % filename
     else:
-        response = ''
+        response_text = ''
         try:
-            response = unicode(json.dumps(r.json(), sort_keys=True,
-                                          indent=4, ensure_ascii=False))
+            response_text = unicode(json.dumps(response.json(), sort_keys=True,
+                                               indent=4, ensure_ascii=False))
         except JSONDecodeError:
-            response = unicode(r.text)
+            response_text = unicode(response.text)
 
         if out_file is None:
-            print 'Ok, response:'
-            print response
+            print 'response:'
+            print response_text
         else:
-            write_data(response, out_file)
-            print 'Ok, response has been saved into %s' % out_file
+            write_data(response_text, out_file)
+            print 'response has been saved into %s' % out_file
 else:
-    print 'Error %s: %s' % (r.status_code, r.reason)
+    print 'Error %s: %s' % (response.status_code, response.reason)
