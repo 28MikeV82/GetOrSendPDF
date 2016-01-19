@@ -25,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Properties;
 
 @Path("/vinwin")
@@ -157,43 +158,44 @@ public class Service {
         ObjectMapper mapper = new ObjectMapper();
         HashMap<String, String> map = mapper.readValue(request,
                 new TypeReference<HashMap<String, String>>(){});
-        return new ParamsMap(map);
+
+        ParamsMap params = new ParamsMap();
+        for(Map.Entry<String, String> e: map.entrySet())
+            if (map.containsKey(e.getKey()) && !"null".equalsIgnoreCase(e.getValue()))
+                params.put(e.getKey(), e.getValue());
+        return params;
     }
 
     private void validateToken(ParamsMap params) throws CodeMsgException {
-        if (!paramExists(params, "token"))
+        if (!params.containsKey("token"))
             throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "Missing token");
     }
 
     private void validateEmail(ParamsMap params) throws CodeMsgException {
-        if (!paramExists(params, "email"))
+        if (!params.containsKey("email"))
             throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "Missing email");
         if (!matchStrWithRegExp(this.config, "regexp.check_email", params.get("email")))
             throw new CodeMsgException(ERROR_CODE_NOT_VALID_FIELD, "Invalid email");
     }
 
     private void validateParameters(ParamsMap params) throws CodeMsgException {
-        if (!paramExists(params, "sts"))
+        if (!params.containsKey("sts"))
             throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "Missing sts");
         if (!matchStrWithRegExp(this.config, "regexp.check_sts", params.get("sts")))
             throw new CodeMsgException(ERROR_CODE_NOT_VALID_FIELD, "Invalid sts");
 
-        boolean vinExists = paramExists(params, "vin");
+        boolean vinExists = params.containsKey("vin");
         if (vinExists)
             if (!matchStrWithRegExp(this.config, "regexp.check_vin", params.get("vin")))
                 throw new CodeMsgException(ERROR_CODE_NOT_VALID_FIELD, "Invalid vin");
 
-        boolean grzExists = paramExists(params, "grz");
+        boolean grzExists = params.containsKey("grz");
         if (grzExists)
             if (!matchStrWithRegExp(this.config, "regexp.check_grz", params.get("grz")))
                 throw new CodeMsgException(ERROR_CODE_NOT_VALID_FIELD, "Invalid grz");
 
         if (!vinExists && !grzExists)
             throw new CodeMsgException(ERROR_CODE_MISSING_FIELDS, "vin or grz must be specified");
-    }
-
-    private boolean paramExists(ParamsMap map, String key) {
-        return map.containsKey(key) && !"null".equals(map.get(key));
     }
 
     private boolean matchStrWithRegExp(Properties config, String regexpName, String str) {

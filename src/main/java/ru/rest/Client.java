@@ -79,7 +79,8 @@ public class Client {
         request.put("token", params.get("token"));
         ArrayNode terms = request.putArray("terms");
         for (String termName: termNames)
-            terms.addObject().put("name", termName).put("value", params.get(termName));
+            if (params.containsKey(termName))
+                terms.addObject().put("name", termName).put("value", params.get(termName));
         return request;
     }
 
