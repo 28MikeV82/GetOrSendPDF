@@ -161,7 +161,7 @@ public class Service {
 
         ParamsMap params = new ParamsMap();
         for(Map.Entry<String, String> e: map.entrySet())
-            if (map.containsKey(e.getKey()) && !"null".equalsIgnoreCase(e.getValue()))
+            if (!"null".equalsIgnoreCase(e.getValue()))
                 params.put(e.getKey(), e.getValue());
         return params;
     }
